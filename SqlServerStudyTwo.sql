@@ -177,6 +177,8 @@ inner join ClassInfo cl on cl.ClassID=st.ClassID;
 */
 --聚合函数
 
+/*
+
 --count 计数函数
 --查询学生人数
 select COUNT(st.StudentPhone)班级人数 from StudentInfo st
@@ -199,6 +201,54 @@ where sb.subTitle ='数据库';
 --求学生成绩的综合
 select SUM(sc.score) from ScoreInfo sc;
 --开窗函数 over
+--将合并的数据↓
 --将统计信息分布到行中
-select  sc.*, avg(sc.score)
+select  sc.*, avg(sc.score )  over()
 from ScoreInfo sc;
+*/
+
+
+--分组 group by :
+--统计男女生人数
+
+select st.StudentGender,  count(*) from  
+StudentInfo st
+group by st.StudentGender;
+
+--查询成绩
+select AVG(sc.score) from ScoreInfo sc
+where sc.subId=1;
+
+--查询每个科目的平均分
+select sc.subId,AVG(sc.score) from ScoreInfo sc
+group by sc.subId;
+
+--多列分组
+--练习1
+select sc.subId,AVG(sc.score),sc.stuId from ScoreInfo sc
+group by sc.subId,sc.stuId;
+
+--练习2
+select st.StudentGender,st.ClassID, count(*)总人数
+from StudentInfo st 
+group by st.StudentGender,st.ClassID;
+
+--统计学生编号大于6的各班级的各性别学生人数
+select st.ClassID,st.StudentGender,COUNT(*) 
+from StudentInfo st 
+where st.StudentID>6
+group by st.ClassID,st.StudentGender;
+
+
+--统计学生编号大于2的编号为3的编辑的个性别的学生人数
+select  st.StudentGender,count(*) 
+from StudentInfo st
+where st.StudentID>6 and st.ClassID=3
+group by st.StudentGender
+
+--统计学生编号大于6的各班级的各性别学生人数学生人数大于3的信息
+select  st.StudentGender,count(*)Serial 
+from StudentInfo st
+where st.StudentID>6 and st.ClassID=3
+group by st.StudentGender
+having COUNT(*)>2;
