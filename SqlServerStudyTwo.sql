@@ -208,6 +208,8 @@ from ScoreInfo sc;
 */
 
 
+/*
+
 --分组 group by :
 --统计男女生人数
 
@@ -252,3 +254,86 @@ from StudentInfo st
 where st.StudentID>6 and st.ClassID=3
 group by st.StudentGender
 having COUNT(*)>2;
+
+*/
+
+--联合查询
+
+use Study;
+
+-- union
+select ClassID from ClassInfo
+union 
+select StudentID from  StudentInfo ;
+-- union all
+select ClassID from ClassInfo
+union all
+select StudentID from  StudentInfo ;
+
+--except 差集
+
+select StudentID 
+from  StudentInfo 
+except
+select ClassID 
+from ClassInfo;
+
+SELECT   ClassID
+FROM      ClassInfo
+except
+select StudentID
+from  StudentInfo 
+
+--intersect 交集
+select ClassID from ClassInfo
+intersect
+select StudentID from  StudentInfo ;
+
+--快速备份
+--快速备份未存在表中备份数据：
+--表结构加数据
+select * into test1  from ClassInfo;
+select *from test1;
+--表结构
+select * into test2  from ClassInfo where 1=2;
+select *from test2;
+-- 备份到以有的表
+insert  into test2(ClassName) select ClassName from test1
+where ClassID>2;
+
+--函数
+--类型转换 cast Convert
+select CAST(89.0000 as decimal(4,2));
+--Convert 有类型转换功能
+select CONVERT(decimal(4,2),89.0000,null)
+--数据库加号运算符 会将连接的字符串转换成int类型进行计算
+select cast(1 as char(1))+'1';
+select  str(1) +'1';
+--字符串函数
+--ascii
+select ASCII(1);
+--char()
+select char(49);
+--字符串截取
+--left(截取字符串,截取长度)
+select LEFT('abcd',2);
+--right(截取字符串,截取长度)
+select right('abcd',2);
+--substring(截取字符串,开始截取位置,截取长度)
+select SUBSTRING('abcd',2,1);
+--len 返回字符串的长度
+select LEN('abcd');
+--lower,upper;大小写转换
+select LOWER('ABCD');
+select UPPER('abcd');
+--ltrim ,rtrim 去空格
+select '    aaaa '
+select  LTRIM('    aaaa    ')
+select RTRIM('    aaaa    ')
+--日期函数
+--getDate
+select GETDATE();
+--获取一年的第几天
+select DATEPART("DAYOFYEAR",GETDATE())
+
+
