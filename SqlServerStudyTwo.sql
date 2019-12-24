@@ -335,5 +335,37 @@ select RTRIM('    aaaa    ')
 select GETDATE();
 --获取一年的第几天
 select DATEPART("DAYOFYEAR",GETDATE())
+select DATEPART("HOUR",GETDATE())
+--函数总结：以"2015-1-1"的格式显示日期
+select CAST( DATEPART("YYYY",GETDATE()) as char(4)) + '-'
+ +CAST( DATEPART("MM",GETDATE()) as char(2))+'-'
+ +CAST(DATEPART("DD",GETDATE()) as char(2))
+ --作业练习
+ --查询科目名称、平均分
+ select sb.subTitle,AVG(sc.score) 平均分 from Subject sb
+ inner join ScoreInfo sc on sc.subId=sb.subId
+ group by sb.subTitle;
+ --查询班级名称平均分
+ select ci.ClassName,AVG(sc.score)平均分 from ClassInfo ci 
+ inner join StudentInfo st on st.ClassID= ci.ClassID
+ inner join ScoreInfo sc on sc.stuId=st.StudentID
+ group by ci.ClassName;
+--查询班级名称、科目名称、平均分
+select ci.ClassName,sb.subTitle,AVG(sc.score) from ClassInfo ci
+inner join StudentInfo st on st.ClassID=ci.ClassID
+inner join ScoreInfo sc on sc.stuId=st.StudentID
+inner join Subject sb on sb.subId=sc.subId
+group by ci.ClassName,sb.subTitle;
+
+
+select  LEN('菜');
+select   LEN( t.ClassName )from test1 t;--varchar
+select   LEN( t.ClassName )from test2 t;--nvarchar
+insert into test1
+values('aaaa');
+insert into test2
+values('四个名字'),('aaaa');
+
+		
 
 
