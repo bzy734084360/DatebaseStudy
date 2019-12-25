@@ -78,3 +78,73 @@ select '日期为'+ CONVERT(varchar(30),GETDATE(),111);
 
 --查询学习信息，若电话号码为空则改为 无联系方式
 select st.*, ISNULL(CONVERT(varchar(20),st.StudentPhone),'无联系方式') from StudentInfo st;
+
+--联合查询
+
+--横表
+select MAX( sc.score) 最高成绩,MIN(sc.score)最低成绩, SUM(sc.score) 总成绩   from ScoreInfo sc;
+--纵表
+select '最高成绩' 描述信息,MAX(sc.score) 成绩 from ScoreInfo sc
+union
+select '最低成绩' 描述信息,MIN(sc.score) 成绩 from ScoreInfo sc
+union
+select '总成绩' 描述信息,SUM(sc.score)成绩  from ScoreInfo sc
+
+--快速备份
+--等同于插入多条数据
+
+--表中的数据赋值，约束没有
+--
+select * into tbtest from ScoreInfo;
+drop table tbtest;
+
+--只赋值表结构
+select top 0 * into tbtest from ScoreInfo;
+
+--关闭自增标识的语句
+--测试 2012 版本无效 原因未查明！
+set identity_insert tbtest on;
+
+--向已有表插入数据
+insert into tbtest select *from ScoreInfo;
+
+--常用函数
+
+select LEN('天气真好');
+select DATALENGTH('明天休息');
+
+--大小写转换
+select  UPPER('asdv');
+select LOWER('ADSD');
+--去空格
+-- LTRIM RTRIM
+
+--字符串截取
+--左边截取
+select LEFT('每天都要吃饭',1)
+--右边截取
+select RIGHT('可口可乐不好吃',3)
+--任意截取
+--从第二个字符截取，截取长度为四个
+select SUBSTRING('123456',2,4)
+
+--获取时间
+select GETDATE();
+--五年后
+select DATEADD(year,5,GETDATE())
+--五个月后
+select DATEADD(MONTH,5,GETDATE())
+--五个小时后
+select DATEADD(HOUR,5,GETDATE())
+--时间求差
+select DATEDIFF(year,'1997-3-1',GETDATE());
+--数据库 时间范围
+select DATEADD(year,-266,GETDATE())
+--获取时间的某个部分
+select DATEPART(YEAR,GETDATE())
+--获取时间的某个部分
+select DATEPART("HOUR",GETDATE())
+
+--输出所有数据中通话时间最长的5调记录
+select top 5  *,DATEDIFF(SECOND,StartDateTime,EndDateTime) 通话时间 from 
+CallRecords order by 通话时间 desc;
