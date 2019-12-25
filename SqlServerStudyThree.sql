@@ -148,3 +148,5 @@ select DATEPART("HOUR",GETDATE())
 --输出所有数据中通话时间最长的5调记录
 select top 5  *,DATEDIFF(SECOND,StartDateTime,EndDateTime) 通话时间 from 
 CallRecords order by 通话时间 desc;
+
+select *from StudentInfo t;

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("ADO访问数据库")]
+[assembly: AssemblyTitle("_01打开数据库")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ADO访问数据库")]
+[assembly: AssemblyProduct("_01打开数据库")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("1d6c6a3b-2010-491d-a120-46979c8f3187")]
+[assembly: Guid("62adc5fd-2e2f-476c-b9ad-6848d8446316")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
