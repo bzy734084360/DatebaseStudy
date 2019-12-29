@@ -1,3 +1,4 @@
+
 /*--查询系统库，来查看有多少数据库
 select *from sysdatabases;
 --查询用户创建的表
