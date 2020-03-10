@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_01窗体传值委托", "_01窗体传值委托\_01窗体传值委托.csproj", "{4606C07C-C17D-4269-BD6E-741C280BAC66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02ConnectionPool", "_02ConnectionPool\_02ConnectionPool.csproj", "{A86439C0-C274-473D-9EBB-17957E7BCFA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03SqlParammeter", "_03SqlParammeter\_03SqlParammeter.csproj", "{E4E407FF-9327-4190-AEE5-3B4B52672266}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4606C07C-C17D-4269-BD6E-741C280BAC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4606C07C-C17D-4269-BD6E-741C280BAC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4606C07C-C17D-4269-BD6E-741C280BAC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86439C0-C274-473D-9EBB-17957E7BCFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86439C0-C274-473D-9EBB-17957E7BCFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86439C0-C274-473D-9EBB-17957E7BCFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86439C0-C274-473D-9EBB-17957E7BCFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E407FF-9327-4190-AEE5-3B4B52672266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E407FF-9327-4190-AEE5-3B4B52672266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E407FF-9327-4190-AEE5-3B4B52672266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E407FF-9327-4190-AEE5-3B4B52672266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
