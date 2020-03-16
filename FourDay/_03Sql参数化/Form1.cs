@@ -44,7 +44,7 @@ namespace _03Sql参数化
 
             //插入数据
             using (SqlConnection conn = new SqlConnection(
-                "server=127.0.0.1;database=Study;uid=sa;pwd=sa"))
+                "server=.;database=Study;uid=sa;pwd=sa"))
             {
                 //string sql = $"insert into Userinfo values('{textBox1.Text}','132465','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}',null)";
                 string sql = $"insert into Userinfo values(@name,'132465','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}',null)";
