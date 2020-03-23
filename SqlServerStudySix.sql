@@ -38,3 +38,12 @@ select *from  (select top 100 percent *,ROW_NUMBER()  over(order by st.StudentID
 where st.StudentGender=1
 ) a
 where a.rowindex between 5 and 8;
+
+
+--case when then end
+
+--查询学生名称、科目名称、成绩
+select *
+from ScoreInfo si
+inner join StudentInfo st on st.StudentID=si.stuId
+inner join Subject sb on sb.subId=si.subId
