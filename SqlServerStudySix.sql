@@ -62,11 +62,39 @@ case  sb.subTitle  when '软件工程' then si.score   else 0 end  as 软件工程,
 case  sb.subTitle  when '计算机英语' then si.score   else 0 end  as 计算机英语,
 case  sb.subTitle  when '算法与设计' then si.score   else 0 end  as 算法与设计
 from ScoreInfo si
-inner join Subject sb on si.subID=sb.subID
+inner join SubjectInfo sb on si.subID=sb.subID
 inner join StudentInfo st on st.StudentID=si.stuId) a 
 group by a.StudentName
 select *from ScoreInfo;
-select *from Subject;
+select *from SubjectInfo;
+
+--行转列
+select *from RowsTransCol;
+
+SELECT *
+FROM 
+(
+    SELECT name,subject,source
+    FROM RowsTransCol
+) AS 原始数据
+PIVOT
+(
+    SUM(source) FOR subject  IN ([语文],[化学],[数学])
+) AS p;
+
+--列转行
+
+select * from  ColTransRows;
+SELECT name, up.subject,up.source
+FROM 
+(
+    SELECT *
+    FROM ColTransRows
+) AS 原始数据
+UNPIVOT
+(
+    source FOR subject IN ([语文],[化学],[数学])
+) AS up;
 
 -- 班级 男生 女生
 select b.ClassName,max(b.男) 男,max(b.女) 女  from (select a.ClassName,
@@ -77,7 +105,6 @@ from StudentInfo stu
 inner join ClassInfo cl on cl.ClassID=stu.ClassID
 group by cl.ClassName,stu.StudentGender)a ) b
 group by b.ClassName;
-
 
 --t-sql编程
 
@@ -144,11 +171,24 @@ select 'No'
   end
 
 --异常处理 try catch 语句
-begin try
-delete from ClassInfo
+begin  try
+select * from ClassInfo a where a.ClassID='ads'
 end try
+
 begin catch
 select @@ERROR  
+end catch
+
+--语法  bengin try  begin catch
+
+begin try
+select 2/0
+end try
+begin catch
+select error_number() as error_number ,
+error_message() as error_message,
+error_state() as error_state,
+error_severity() as error_severity
 end catch
 
 --事务
@@ -173,10 +213,14 @@ delete from ClassInfo
 commit tran --提交事务
 
 end try
-begin catch
 
+begin catch
 rollback tran --回滚事务 回滚到开始事务状态处
-select '失败'A
+select '失败'A,
+error_number() as error_number ,
+error_message() as error_message,
+error_state() as error_state,
+error_severity() as error_severity
 
 end catch
 
